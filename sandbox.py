@@ -8,6 +8,10 @@ input = """&lt;?xml version="1.0" encoding="utf-8"?&gt;&lt;ExportedWorkflow
 def parse_inner_xml(xmlSerialized):
     cleanedxmlSerialized = xmlSerialized.replace("&lt;","<").replace("&gt;",">")
     mytree = ET.fromstring(cleanedxmlSerialized)
+    actions = mytree[2][0].findall("NWActionConfig")
+
+    for action in actions:
+        print(action[0].text)
 
 
 
